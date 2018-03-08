@@ -39,8 +39,7 @@ class TowersOfHanoi
     gets.chomp.to_i
   end
   def game_over
-    puts "congrats, you win!"
-    puts "you made #{@log_move} moves."
+    puts "game over, you moved #{@log_move} times!"
   end
   def valid_move?(from_tower, to_tower)
     from_tower, to_tower = towers.values_at(from_tower, to_tower)
