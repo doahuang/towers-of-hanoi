@@ -3,17 +3,17 @@ class TowersOfHanoi
   def initialize
     @log_move = 0
     @towers = [[3, 2, 1], [], []]
-    @disk = { nil => "   ", 1 => "o  ", 2 => "oo ", 3 => "ooo" }
+    @disk = { nil => "     ", 1 => "  o  ", 2 => " o o ", 3 => "o o o" }
   end
   def render
     intro
     2.downto(0) do |i|
       layer = towers.map{ |tower| @disk[tower[i]] }
-      puts " " + layer.join(" ")
+      puts " " + layer.join("  ")
     end
-    puts " --- --- ---"
-    puts "  0   1   2 "
+    puts " _____  _____  _____"
     puts
+    puts "   0      1      2\n\n\n"
   end
   def play
     render
@@ -28,8 +28,7 @@ class TowersOfHanoi
   private
   def intro
     system("clear") || system("cls")
-    puts "let's play tower of hanoi!"
-    puts
+    puts "let's play tower of hanoi!\n\n\n"
   end
   def won?
     towers[1..2].any?{ |tower| tower == [3, 2, 1] }
@@ -39,7 +38,7 @@ class TowersOfHanoi
     gets.chomp.to_i
   end
   def game_over
-    puts "game over, you moved #{@log_move} times!"
+    puts "you win, you moved #{@log_move} times!\n\n\n"
   end
   def valid_move?(from_tower, to_tower)
     from_tower, to_tower = towers.values_at(from_tower, to_tower)
